@@ -1,7 +1,7 @@
 package interview
 
 import (
-	"github.com/ojbkgo/leetcode/common"
+	"github.com/ojbkgo/leetcode-common"
 	"github.com/ojbkgo/leetcode/data/i03"
 )
 
