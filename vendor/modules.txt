@@ -1,2 +1,0 @@
-# github.com/ojbkgo/leetcode-common v1.0.1
-github.com/ojbkgo/leetcode-common
