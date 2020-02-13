@@ -2,7 +2,7 @@ package interview
 
 import (
 	. "github.com/ojbkgo/leetcode-common"
-	"github.com/ojbkgo/leetcode/data/i04"
+	"github.com/ojbkgo/leetcode/data/interview/i04"
 )
 
 func findNumberIn2DArray(matrix [][]int, target int) bool {

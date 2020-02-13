@@ -2,7 +2,7 @@ package interview
 
 import (
 	"github.com/ojbkgo/leetcode-common"
-	"github.com/ojbkgo/leetcode/data/i03"
+	"github.com/ojbkgo/leetcode/data/interview/i03"
 )
 
 func findRepeatNumber(nums []int) int {
