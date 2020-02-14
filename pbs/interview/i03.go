@@ -5,6 +5,7 @@ import (
 	"github.com/ojbkgo/leetcode/data/interview/i03"
 )
 
+// https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
 func findRepeatNumber(nums []int) int {
 
 	r := make(map[int]bool)

@@ -2,6 +2,7 @@ package interview
 
 import . "github.com/ojbkgo/leetcode-common"
 
+// https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/
 func replaceSpace(s string) string {
 	b := make([]byte, 0)
 
