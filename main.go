@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/ojbkgo/leetcode/pbs/didi"
+	"github.com/ojbkgo/leetcode/pbs/normal"
 )
 
 func main() {
 	//interview.Test_movingCount()
-	didi.Test_lengthOfLongestSubstring()
+	normal.Test_generateMatrix()
 }
 
