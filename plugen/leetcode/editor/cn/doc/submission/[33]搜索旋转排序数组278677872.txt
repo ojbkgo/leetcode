@@ -1,0 +1,273 @@
+func search(nums []int, target int) int {
+	n := len(nums)
+	l, r := 0, n-1
+
+	m := l + ((r - l) >> 1)
+	fmt.Println(nums)
+	if nums[l] < nums[m] {
+		fmt.Println("l < r:", nums[l:m+1])
+		if res := searchOrdered(nums[l:m+1], target); res != -1 {
+			fmt.Println("res:", res)
+			return res
+		}
+	} else {
+		fmt.Println("l > r:", nums[m+1:])
+		if res := search(nums[l:m+1], target); res != -1 {
+			return res
+		}
+	}
+
+	if nums[m+1] < nums[r] {
+		fmt.Println("m+1 < r:", nums[m+1:])
+		if res := searchOrdered(nums[m+1:], target); res != -1 {
+			fmt.Println("res:", res + m + 1)
+			return res + m + 1
+		}
+	} else {
+		if res := search(nums[m+1: ], target); res != -1 {
+			return res + m + 1
+		}
+	}
+
+	return -1
+}
+
+func searchOrdered(nums []int, target int) int {
+	n := len(nums)
+	l, r := 0, n-1
+
+	for l <= r {
+		m := l + ((r - l) >> 1)
+		if nums[m] > target {
+			r = m - 1
+		} else if nums[m] < target {
+			l = m + 1
+		} else {
+			return m
+		}
+	}
+
+	if r+1 == 0 || r+1 >= n {
+		return -1
+	}
+
+	return r + 1
+}
+
+
+//runtime_error:runtime: out of memory: cannot allocate 268435456-byte block (138215424 in use)
+fatal error: out of memory
+runtime stack:
+runtime.throw({0x4c968e, 0x0})
+panic.go, line 1198
+runtime.stackalloc(0x10000000)
+stack.go, line 411
+runtime.copystack(0xc0000001a0, 0x10000000)
+stack.go, line 859
+runtime.newstack()
+stack.go, line 1097
+runtime.morestack()
+	/usr/local/go/src/runtime/asm_amd64.s:461 +0x8b
+fmt.(*pp).handleMethods(0xc00005e820, 0x76)
+print.go, line 570
+fmt.(*pp).printValue(0xc00005e820, {0x4b4ce0, 0xc000072060, 0x4ba160}, 0x76, 0x1)
+print.go, line 723
+fmt.(*pp).printValue(0xc00005e820, {0x4b3e60, 0xc0002d64b0, 0x0}, 0x76, 0x0)
+print.go, line 865
+fmt.(*pp).printArg(0xc00005e820, {0x4b3e60, 0xc0002d64b0}, 0x76)
+print.go, line 712
+fmt.(*pp).doPrintln(0xc00005e820, {0xc0080e0b48, 0x1, 0xc0080e0ae8})
+print.go, line 1169
+fmt.Fprintln({0x4ebaa0, 0xc00000e020}, {0xc0080e0b48, 0x1, 0x1})
+print.go, line 264
+fmt.Println(...)
+print.go, line 274
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 6
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+main.search({0xc000072060, 0xc00000e020, 0x4}, 0x0)
+solution.go, line 15
+//last_testcase:[1] 0
